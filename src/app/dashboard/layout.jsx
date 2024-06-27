@@ -6,8 +6,10 @@ export default function DashboardLayout({ children }) {
     <RouteGuard>
       <section className="w-full md:mt-0 mt-4">
         <div className="container grid md:grid-cols-[.3fr_1fr] gap-2">
-          <Sidebar />
-          <div className="w-full">{children}</div>
+          <div className="w-full">
+            <Sidebar />
+          </div>
+          <div className="w-full p-5">{children}</div>
         </div>
       </section>
     </RouteGuard>

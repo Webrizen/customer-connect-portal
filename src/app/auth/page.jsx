@@ -17,7 +17,7 @@ export default function page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { user, login } = useAuth();
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -33,9 +33,14 @@ export default function page() {
       setLoading(false);
     }
   };
+
+  if (user) {
+    router.push("/dashboard");
+  }
+
   return (
     <section className="w-full min-h-screen flex justify-center items-center">
-     <Toaster position="bottom-center" />
+      <Toaster position="bottom-center" />
       <Card className="mx-auto max-w-sm">
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
@@ -73,7 +78,7 @@ export default function page() {
               type="submit"
               className="w-full bg-[#00aeef] rounded text-white"
             >
-               {loading ? <Spinner /> : "Login"}
+              {loading ? <Spinner /> : "Login"}
             </Button>
           </form>
           <div className="flex justify-center mt-3 items-center">

@@ -5,23 +5,23 @@ import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function RouteGuard({ children }) {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) {
+    if (!loading && !user) {
       router.push("/auth");
       toast.error(`You're Not Logged In. Please login to access this route.`, {
         duration: 4000,
         position: "bottom-center",
       });
     }
-  }, [user]);
+  }, [user, loading]);
 
-  if (!user) {
+  if (loading) {
     return (
       <section className="flex justify-center items-center w-full min-h-screen">
-      <Toaster />
+        <Toaster />
         <svg
           className="animate-spin h-8 w-8 text-orange-700 mr-2"
           xmlns="http://www.w3.org/2000/svg"
