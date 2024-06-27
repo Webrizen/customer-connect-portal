@@ -4,8 +4,10 @@ import Image from "next/image";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import Logo from "@/assets/logo.png";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
 
   return (
     <header className="p-2 bg-[rgba(225,225,225,0.1)] backdrop-blur-3xl z-50 sticky top-0">
@@ -24,20 +26,21 @@ const Navbar = () => {
           />
           <span>Customer Connect Portal</span>
         </Link>
-        <div
-          className="w-full flex justify-end items-center gap-2"
-          whileHover="hover"
-        >
-          <Button
-            asChild
-            className="bg-gradient-to-r from-[rgb(99,18,240)] to-[rgb(35,35,201)] !text-white rounded hover:backdrop-blur-lg"
-          >
-            <Link
-              href="/auth"
+        <div className="w-full flex justify-end items-center gap-2">
+          {user ? (
+            <Button
+              className="bg-red-500 !text-white rounded hover:backdrop-blur-lg"
+              onClick={logout}
             >
-              Login
+              Logout
+            </Button>
+          ) : (
+            <Link href="/auth">
+              <Button className="bg-[#00aeef] !text-white rounded hover:backdrop-blur-lg">
+                Login
+              </Button>
             </Link>
-          </Button>
+          )}
         </div>
       </div>
     </header>

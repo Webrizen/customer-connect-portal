@@ -2,6 +2,7 @@ import Navbar from "@/components/system/Navbar";
 import "./globals.css";
 import { Providers } from "@/providers/providers";
 import { Poppins, Unbounded } from "next/font/google";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,8 +27,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
         <Providers>
-          <Navbar />
-          {children}
+          <AuthProvider>
+            <Navbar />
+            {children}
+          </AuthProvider>
         </Providers>
       </body>
     </html>

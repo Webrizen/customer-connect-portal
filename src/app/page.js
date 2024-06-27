@@ -67,14 +67,26 @@ export default function Home() {
             />
           </svg>
         </Link>
-        <h1 className={`text-gray-900 dark:text-white mx-auto max-w-5xl font-bold text-4xl/tight sm:text-5xl/tight lg:text-6xl/tight xl:text-7xl/tight ${unbounded.className}`}>
-          <span className="inline bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-yellow-500 via-purple-500 to-blue-500 bg-clip-text font-display tracking-tight text-transparent">Customer</span> Connect <span className="inline bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-indigo-900 via-indigo-400 to-indigo-900 bg-clip-text font-display tracking-tight text-transparent">Portal.</span>
+        <h1
+          className={`text-gray-900 dark:text-white mx-auto max-w-5xl font-bold text-4xl/tight sm:text-5xl/tight lg:text-6xl/tight xl:text-7xl/tight ${unbounded.className}`}
+        >
+          <span className="inline bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-yellow-500 via-purple-500 to-blue-500 bg-clip-text font-display tracking-tight text-transparent">
+            Customer
+          </span>{" "}
+          Connect{" "}
+          <span className="inline bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-indigo-900 via-indigo-400 to-indigo-900 bg-clip-text font-display tracking-tight text-transparent">
+            Portal.
+          </span>
         </h1>
         <p className="text-gray-700 dark:text-gray-300 mx-auto max-w-2xl">
-        Designed to streamline customer interactions and enhance productivity, CustomerConnect Portal offers a seamless user experience with a modern and intuitive interface.
+          Designed to streamline customer interactions and enhance productivity,
+          CustomerConnect Portal offers a seamless user experience with a modern
+          and intuitive interface.
         </p>
         <div className="w-full flex flex-col justify-center items-center sm:flex-row gap-y-3 gap-x-4 max-w-4xl mx-auto">
-          <Button>Dashboard</Button>
+          <Link href="/dashboard">
+            <Button>Dashboard</Button>
+          </Link>
           <Button
             type="button"
             className={`${boxShadowClass} ${gradientClass} gradient-1 relative font-medium text-base flex justify-center gap-2 items-center mr-2 overflow-hidden text-white group  group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-black focus:ring-1 focus:outline-none focus:ring-pink-800 dark:focus:ring-pink-800`}
