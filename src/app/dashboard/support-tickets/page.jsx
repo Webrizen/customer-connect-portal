@@ -251,7 +251,9 @@ export default function Page() {
       <section>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold">Support Tickets</h2>
-          <Button size="sm">Create Ticket</Button>
+          <Button size="sm">
+            <Link href="/dashboard/support-tickets/create" className="w-full h-full flex justify-center items-center text-center">Create Ticket</Link>
+          </Button>
         </div>
         <Table>
           <TableHeader className="bg-[#00aeef]">

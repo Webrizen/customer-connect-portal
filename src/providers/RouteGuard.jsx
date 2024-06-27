@@ -23,7 +23,7 @@ export default function RouteGuard({ children }) {
       <section className="flex justify-center items-center w-full min-h-screen">
         <Toaster />
         <svg
-          className="animate-spin h-8 w-8 text-orange-700 mr-2"
+          className="animate-spin h-8 w-8 text-[#00aeef] mr-2"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
