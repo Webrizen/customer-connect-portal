@@ -1,113 +1,88 @@
-import Image from "next/image";
+"use client";
+import React, { useEffect, useState } from "react";
+import { Unbounded } from "next/font/google";
+import Link from "next/link";
+import { Button } from "@nextui-org/react";
+
+const unbounded = Unbounded({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
 
 export default function Home() {
+  const [gradientClass, setGradientClass] = useState(
+    "bg-gradient-to-r from-blue-500 to-teal-400"
+  );
+  const [boxShadowClass, setBoxShadowClass] = useState(
+    "shadow-[0px_22px_70px_4px_rgba(59,130,246,0.56)]"
+  );
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (gradientClass === "bg-gradient-to-r from-blue-500 to-teal-400") {
+        setGradientClass("bg-gradient-to-r from-purple-800 to-pink-500");
+        setBoxShadowClass("shadow-[0px_22px_70px_4px_rgba(165,85,247,0.56)]");
+      } else if (
+        gradientClass === "bg-gradient-to-r from-purple-800 to-pink-500"
+      ) {
+        setGradientClass("bg-gradient-to-r from-red-500 to-yellow-300");
+        setBoxShadowClass("shadow-[0px_22px_70px_4px_rgba(253,186,116,0.56)]");
+      } else if (
+        gradientClass === "bg-gradient-to-r from-red-500 to-yellow-300"
+      ) {
+        setGradientClass("bg-gradient-to-r from-blue-500 to-teal-400");
+        setBoxShadowClass("shadow-[0px_22px_70px_4px_rgba(59,130,246,0.56)]");
+      }
+    }, 2100);
+
+    return () => clearInterval(intervalId);
+  }, [gradientClass]);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <section className="min-h-max bg-white bg-[url('/hero-bg.svg')] bg-cover bg-center relative">
+      <div className="absolute inset-0 bg-[url(/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+      <div className="relative mx-auto pt-32 pb-24 lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 text-center space-y-8">
+        <Link
+          href="/"
+          className="inline-flex md:flex-row flex-col md:justify-between justify-center items-center py-1 px-1 pr-4 text-sm text-gray-900 bg-purple-200 md:rounded-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 border border-gray-100  hover:bg-purple-200"
+        >
+          <span className="w-min text-xs bg-gradient-to-tr from-purple-500 to-pink-300 rounded-full text-white px-4 py-1.5 mr-3">
+            New
+          </span>{" "}
+          <span className="text-sm font-medium">
+            We are launching our IPO this month - read our blog!
+          </span>
+          <svg
+            aria-hidden="true"
+            className="ml-2 w-5 h-5 md:block hidden"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+            <path
+              fillRule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clipRule="evenodd"
             />
-          </a>
+          </svg>
+        </Link>
+        <h1 className={`text-gray-900 dark:text-white mx-auto max-w-5xl font-bold text-4xl/tight sm:text-5xl/tight lg:text-6xl/tight xl:text-7xl/tight ${unbounded.className}`}>
+          <span className="inline bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-yellow-500 via-purple-500 to-blue-500 bg-clip-text font-display tracking-tight text-transparent">Customer</span> Connect <span className="inline bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-indigo-900 via-indigo-400 to-indigo-900 bg-clip-text font-display tracking-tight text-transparent">Portal.</span>
+        </h1>
+        <p className="text-gray-700 dark:text-gray-300 mx-auto max-w-2xl">
+        Designed to streamline customer interactions and enhance productivity, CustomerConnect Portal offers a seamless user experience with a modern and intuitive interface.
+        </p>
+        <div className="w-full flex flex-col justify-center items-center sm:flex-row gap-y-3 gap-x-4 max-w-4xl mx-auto">
+          <Button>Dashboard</Button>
+          <Button
+            type="button"
+            className={`${boxShadowClass} ${gradientClass} gradient-1 relative font-medium text-base flex justify-center gap-2 items-center mr-2 overflow-hidden text-white group  group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-black focus:ring-1 focus:outline-none focus:ring-pink-800 dark:focus:ring-pink-800`}
+          >
+            <span>Login</span>
+          </Button>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </section>
   );
 }
