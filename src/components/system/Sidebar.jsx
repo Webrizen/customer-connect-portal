@@ -9,7 +9,7 @@ export default function Sidebar({ className, items, ...props }) {
   return (
     <aside
       className={cn(
-        "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1 h-[85vh] py-3 overflow-hidden transition-all -translate-x-full lg:-translate-x-0 bg-white border border-slate-200 rounded-xl flex-col justify-between px-4 lg:transition-none ease-linear mt-6",
+        "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1 h-[85vh] py-3 overflow-hidden transition-all -translate-x-full lg:-translate-x-0 bg-white border border-slate-200 rounded-xl flex-col justify-between px-4 lg:transition-none ease-linear sticky top-[60px] mt-6",
         className
       )}
       {...props}
