@@ -6,12 +6,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthContext";
 import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 
 export default function page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [isSelected, setIsSelected] = useState(true);
+  const [mobile, setMobile] = useState("");
   const { user, login } = useAuth();
   const router = useRouter();
 
@@ -39,11 +46,11 @@ export default function page() {
       <div className="container relative md:min-h-screen h-screen flex flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Switch
           className="absolute right-4 top-24 md:right-8 md:top-8 bg-[rgba(0,0,0,0.06)] px-4 py-2 rounded-lg"
-          isSelected={isSelected} 
+          isSelected={isSelected}
           onValueChange={setIsSelected}
           size="sm"
         >
-          Login using mobile number
+          Login using OTP using mobile number
         </Switch>
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r dark:border-slate-700">
           <div className="absolute inset-0 bg-[url('/login-bg.png')] bg-center bg-cover" />
@@ -83,36 +90,68 @@ export default function page() {
                 Login to your account
               </h1>
               <p className="text-sm text-muted-foreground">
-                Enter your email and password to log in
+                {isSelected
+                  ? "Enter your mobile number to log in"
+                  : "Enter your email and password to log in"}
               </p>
             </div>
             <Card className="w-full">
               <CardContent className="w-full py-4">
                 <form className="w-full grid gap-4" onSubmit={handleSubmit}>
-                  <div className="grid gap-2">
-                    <Input
-                      id="email"
-                      type="email"
-                      label="Email"
-                      variant="underlined"
-                      placeholder="m@example.com"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Input
-                      id="password"
-                      type="password"
-                      label="password"
-                      required
-                      variant="underlined"
-                      placeholder="*********"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </div>
+                  {isSelected ? (
+                    <div className="grid gap-2">
+                      <Input
+                        id="mobile"
+                        type="tel"
+                        label="Mobile Number"
+                        variant="underlined"
+                        placeholder="+1234567890"
+                        required
+                        value={mobile}
+                        onChange={(e) => setMobile(e.target.value)}
+                      />
+                      <div className="text-left text-sm">
+                        Enter your one-time password.
+                      </div>
+                      <InputOTP maxLength={6}>
+                        <InputOTPGroup>
+                          <InputOTPSlot index={0} />
+                          <InputOTPSlot index={1} />
+                          <InputOTPSlot index={2} />
+                          <InputOTPSlot index={3} />
+                          <InputOTPSlot index={4} />
+                          <InputOTPSlot index={5} />
+                        </InputOTPGroup>
+                      </InputOTP>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="grid gap-2">
+                        <Input
+                          id="email"
+                          type="email"
+                          label="Email"
+                          variant="underlined"
+                          placeholder="example@example.com"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </div>
+                      <div className="grid gap-2">
+                        <Input
+                          id="password"
+                          type="password"
+                          label="Password"
+                          required
+                          variant="underlined"
+                          placeholder="*********"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </div>
+                    </>
+                  )}
                   <Button
                     type="submit"
                     className="w-full bg-[#00aeef] rounded text-white"
