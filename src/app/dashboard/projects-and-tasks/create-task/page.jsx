@@ -45,11 +45,16 @@ export default function page() {
                 variant="underlined"
               />
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-3 gap-3">
               <Select label="Select Priority" variant="underline">
                 <SelectItem>Low</SelectItem>
                 <SelectItem>Medium</SelectItem>
                 <SelectItem>High</SelectItem>
+              </Select>
+              <Select label="Select Status" variant="underline">
+                <SelectItem>Not Started</SelectItem>
+                <SelectItem>Ongoing</SelectItem>
+                <SelectItem>Completed</SelectItem>
               </Select>
               <Select label="Assigned to" variant="underline">
                 <SelectItem>John Doe</SelectItem>
