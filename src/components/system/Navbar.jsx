@@ -11,10 +11,10 @@ const Navbar = () => {
 
   return (
     <header className="p-2 bg-[rgba(225,225,225,0.1)] backdrop-blur-3xl z-50 sticky top-0">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="md:container mx-auto flex justify-between items-center">
         <Link
           href="/"
-          className="h-8 w-auto whitespace-nowrap flex gap-2 justify-start items-center p-1 rounded-md hover:bg-[rgba(225,225,225,0.05)]"
+          className="h-8 w-auto whitespace-nowrap md:flex hidden gap-2 justify-start items-center p-1 rounded-md hover:bg-[rgba(225,225,225,0.05)]"
         >
           <Image
             src={Logo}

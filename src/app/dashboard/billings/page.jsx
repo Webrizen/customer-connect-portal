@@ -98,11 +98,11 @@ export default function page() {
           <TableBody>
             {currentTickets.map((billing) => (
               <TableRow key={billing.id}>
-                <TableCell>{billing.client}</TableCell>
-                <TableCell>{billing.title}</TableCell>
-                <TableCell>{billing.description}</TableCell>
-                <TableCell>${billing.amount}</TableCell>
-                <TableCell>{billing.date}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{billing.client}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{billing.title}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{billing.description}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">${billing.amount}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{billing.date}</TableCell>
                 <TableCell>
                   <Badge className={`${
                     billing.status === "Paid" ? "bg-green-500" : 

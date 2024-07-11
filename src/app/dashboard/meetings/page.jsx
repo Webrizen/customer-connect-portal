@@ -272,9 +272,9 @@ export default function Page() {
           <TableBody>
             {currentTickets.map((meeting) => (
               <TableRow key={meeting.id}>
-                <TableCell>{meeting.title}</TableCell>
-                <TableCell>{meeting.date}</TableCell>
-                <TableCell>{meeting.time}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{meeting.title}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{meeting.date}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{meeting.time}</TableCell>
                 <TableCell>{meeting.attendees.join(", ")}</TableCell>
                 <TableCell>
                   <Badge

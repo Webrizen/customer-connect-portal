@@ -273,11 +273,11 @@ export default function Page() {
                     #{ticket.id}
                   </Link>
                 </TableCell>
-                <TableCell>{ticket.subject}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{ticket.subject}</TableCell>
                 <TableCell>
                   <Badge variant="secondary">{ticket.status}</Badge>
                 </TableCell>
-                <TableCell>{ticket.lastUpdated}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{ticket.lastUpdated}</TableCell>
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger>

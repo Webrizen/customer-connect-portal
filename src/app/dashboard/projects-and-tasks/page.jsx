@@ -349,7 +349,7 @@ export default function Page() {
                     #{project.id}
                   </Link>
                 </TableCell>
-                <TableCell className="flex flex-col">
+                <TableCell className="flex flex-col md:whitespace-normal whitespace-nowrap">
                   <b>{project.name}</b>
                   <span className="text-xs">{project.description}</span>
                 </TableCell>
@@ -372,7 +372,7 @@ export default function Page() {
                 <TableCell>
                   <Badge variant="secondary">{project.status}</Badge>
                 </TableCell>
-                <TableCell>{project.deadline}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{project.deadline}</TableCell>
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger>
@@ -481,7 +481,7 @@ export default function Page() {
                     #{task.id}
                   </Link>
                 </TableCell>
-                <TableCell className="flex flex-col">
+                <TableCell className="flex flex-col md:whitespace-normal whitespace-nowrap">
                   <b>{task.name}</b>
                   <span className="text-xs">{task.description}</span>
                 </TableCell>
@@ -504,7 +504,7 @@ export default function Page() {
                 <TableCell>
                   <Badge variant="secondary">{task.status}</Badge>
                 </TableCell>
-                <TableCell>{task.deadline}</TableCell>
+                <TableCell className="md:whitespace-normal whitespace-nowrap">{task.deadline}</TableCell>
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger>
