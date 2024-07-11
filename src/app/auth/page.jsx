@@ -17,7 +17,7 @@ export default function page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isSelected, setIsSelected] = useState(true);
+  const [isSelected, setIsSelected] = useState(false);
   const [mobile, setMobile] = useState("");
   const { user, login } = useAuth();
   const router = useRouter();
@@ -44,16 +44,8 @@ export default function page() {
     <>
       <Toaster position="bottom-center" />
       <div className="container relative md:min-h-screen h-screen flex flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-        <Switch
-          className="absolute right-4 top-24 md:right-8 md:top-8 bg-[rgba(0,0,0,0.06)] px-4 py-2 rounded-lg"
-          isSelected={isSelected}
-          onValueChange={setIsSelected}
-          size="sm"
-        >
-          Login using OTP using mobile number
-        </Switch>
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r dark:border-slate-700">
-          <div className="absolute inset-0 bg-[url('/login-bg.png')] bg-center bg-cover" />
+          <div className="absolute inset-0 bg-[url('/bg-login.gif')] bg-center bg-cover" />
           <Link
             href="/"
             className="relative z-20 flex items-center text-lg font-medium"
@@ -72,16 +64,7 @@ export default function page() {
             </svg>
             Customer Connect Portal LLP.
           </Link>
-          <div className="relative z-20 mt-auto">
-            <blockquote className="space-y-2">
-              <p className="text-lg">
-                &ldquo;Embrace the journey of wellness with each choice you
-                make; every step, every meal, every breath is a testament to
-                your commitment to a vibrant, healthier you.&rdquo;
-              </p>
-              <footer className="text-sm">Sofia Davis</footer>
-            </blockquote>
-          </div>
+          <div className="relative z-20 mt-auto"></div>
         </div>
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
@@ -97,6 +80,14 @@ export default function page() {
             </div>
             <Card className="w-full">
               <CardContent className="w-full py-4">
+                <Switch
+                  className="bg-[rgba(0,0,0,0.06)] px-4 py-2 rounded-lg"
+                  isSelected={isSelected}
+                  onValueChange={setIsSelected}
+                  size="sm"
+                >
+                  Login using OTP using mobile number
+                </Switch>
                 <form className="w-full grid gap-4" onSubmit={handleSubmit}>
                   {isSelected ? (
                     <div className="grid gap-2">
