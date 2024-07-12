@@ -49,7 +49,7 @@ export default function page() {
                 variant="underlined"
               />
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-3">
               <DatePicker
               id="deadline"
               label="Last Date For Payment"
