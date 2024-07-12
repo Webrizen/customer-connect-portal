@@ -1,4 +1,3 @@
-import Navbar from "@/components/system/Navbar";
 import "./globals.css";
 import { Providers } from "@/providers/providers";
 import { Poppins, Unbounded } from "next/font/google";
@@ -28,7 +27,6 @@ export default function RootLayout({ children }) {
       <body className={poppins.className}>
         <Providers>
           <AuthProvider>
-            <Navbar />
             {children}
           </AuthProvider>
         </Providers>

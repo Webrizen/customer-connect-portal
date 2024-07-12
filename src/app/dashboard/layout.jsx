@@ -1,5 +1,5 @@
 import Sidebar from "@/components/system/Sidebar";
-import RouteGuard from "@/providers/RouteGuard";
+import Navbar from "@/components/system/Navbar";
 
 export default function DashboardLayout({ children }) {
   const sidebarNavItems = [
@@ -110,7 +110,8 @@ export default function DashboardLayout({ children }) {
     },
   ];
   return (
-    <RouteGuard>
+      <>
+        <Navbar />
       <section className="w-full md:mt-0 mt-4">
         <div className="container grid md:grid-cols-[.3fr_1fr] grid-cols-1 gap-2">
           <div className="w-full">
@@ -119,6 +120,6 @@ export default function DashboardLayout({ children }) {
           <div className="w-full md:p-5">{children}</div>
         </div>
       </section>
-    </RouteGuard>
+      </>
   );
 }
