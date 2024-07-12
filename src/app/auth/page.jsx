@@ -47,7 +47,7 @@ export default function Home() {
       <div className="md:container mx-auto flex justify-between items-center">
         <Link
           href="/"
-          className="h-8 w-auto whitespace-nowrap md:flex hidden gap-2 justify-start items-center p-1 rounded-md hover:bg-[rgba(225,225,225,0.05)]"
+          className="h-8 w-auto whitespace-nowrap flex gap-2 justify-start items-center p-1 rounded-md hover:bg-[rgba(225,225,225,0.05)]"
         >
           <Image
             src={Logo}
@@ -69,7 +69,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[url('/tablet-login-cuate.svg')] bg-center bg-[length:90%] bg-no-repeat" />
           <Link
             href="/"
-            className="md:hidden relative md:top-0 -top-[10%] z-20 flex items-center text-lg font-medium bg-transparent backdrop-blur-3xl md:backdrop-blur-0 md:px-0 md:py-0 px-3 py-2 rounded-xl"
+            className="md:hidden relative whitespace-nowrap opacity-0 md:top-0 -top-[15%] z-20 flex items-center text-lg font-medium bg-transparent backdrop-blur-3xl md:backdrop-blur-0 md:px-0 md:py-0 px-3 py-2 rounded-xl"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ export default function Home() {
             >
               <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
             </svg>
-            Customer Connect Portal LLP.
+            Customer Connect Portal.
           </Link>
           <div className="relative z-20 mt-auto"></div>
         </div>
