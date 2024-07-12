@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <>
       <Toaster position="bottom-center" />
-      <header className="p-2 bg-[rgba(225,225,225,0.1)] backdrop-blur-3xl z-50 sticky top-0">
+      <header className="md:p-2 p-4 bg-[rgba(225,225,225,0.1)] backdrop-blur-3xl z-50 sticky top-0">
       <div className="md:container mx-auto flex justify-between items-center">
         <Link
           href="/"
