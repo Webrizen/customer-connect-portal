@@ -12,8 +12,10 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import Image from "next/image";
+import Logo from "@/assets/logo.png";
 
-export default function page() {
+export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -26,8 +28,6 @@ export default function page() {
     e.preventDefault();
     setLoading(true);
     try {
-      await login(email, password);
-      toast.success("Login successful!");
       router.push("/dashboard");
     } catch (err) {
       toast.error("Invalid credentials");
@@ -43,12 +43,33 @@ export default function page() {
   return (
     <>
       <Toaster position="bottom-center" />
+      <header className="p-2 bg-[rgba(225,225,225,0.1)] backdrop-blur-3xl z-50 sticky top-0">
+      <div className="md:container mx-auto flex justify-between items-center">
+        <Link
+          href="/"
+          className="h-8 w-auto whitespace-nowrap md:flex hidden gap-2 justify-start items-center p-1 rounded-md hover:bg-[rgba(225,225,225,0.05)]"
+        >
+          <Image
+            src={Logo}
+            placeholder="blur"
+            alt="Logo"
+            width={500}
+            height={500}
+            className="h-full w-auto"
+          />
+          <span>Customer Connect Portal</span>
+        </Link>
+        <div className="w-full flex justify-end items-center gap-2">
+         
+        </div>
+      </div>
+    </header>
       <div className="container relative md:min-h-screen h-screen flex flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-        <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r dark:border-slate-700">
-          <div className="absolute inset-0 bg-[url('/bg-login.gif')] bg-center bg-cover" />
+        <div className="relative h-full flex-col bg-muted p-10 md:text-white text-slate-950 lg:flex dark:border-r dark:border-slate-700">
+          <div className="absolute inset-0 bg-[url('/tablet-login-cuate.svg')] bg-center bg-[length:90%] bg-no-repeat" />
           <Link
             href="/"
-            className="relative z-20 flex items-center text-lg font-medium"
+            className="md:hidden relative md:top-0 -top-[10%] z-20 flex items-center text-lg font-medium bg-transparent backdrop-blur-3xl md:backdrop-blur-0 md:px-0 md:py-0 px-3 py-2 rounded-xl"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +102,7 @@ export default function page() {
             <Card className="w-full">
               <CardContent className="w-full py-4">
                 <Switch
-                  className="bg-[rgba(0,0,0,0.06)] px-4 py-2 rounded-lg"
+                  className="bg-[rgba(0,0,0,0.06)] px-4 py-2 rounded-lg mb-2"
                   isSelected={isSelected}
                   onValueChange={setIsSelected}
                   size="sm"
@@ -97,7 +118,6 @@ export default function page() {
                         label="Mobile Number"
                         variant="underlined"
                         placeholder="+1234567890"
-                        required
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                       />
@@ -124,7 +144,6 @@ export default function page() {
                           label="Email"
                           variant="underlined"
                           placeholder="example@example.com"
-                          required
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -134,7 +153,6 @@ export default function page() {
                           id="password"
                           type="password"
                           label="Password"
-                          required
                           variant="underlined"
                           placeholder="*********"
                           value={password}
@@ -157,7 +175,7 @@ export default function page() {
                 </div>
               </CardContent>
             </Card>
-            <p className="px-8 text-center text-sm text-muted-foreground">
+            <p className="px-8 text-center text-sm text-muted-foreground md:pb-0 pb-10">
               By clicking continue, you agree to our{" "}
               <Link
                 href="/terms-and-conditions"
